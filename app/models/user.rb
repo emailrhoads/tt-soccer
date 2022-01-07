@@ -9,6 +9,6 @@ class User < ApplicationRecord
   before_create :default_api_key
 
   def default_api_key
-    self.api_key ||= SecureRandom.hex
+    self.api_key ||= SecureRandom.uuid
   end
 end

@@ -1,7 +1,8 @@
 class Api::V1::UserSessionsController < ApplicationController
   def create
-    binding.pry
-    @user = login(params[:email], params[:password])
+    @user = User.find_by(email: params[:email], api_key: params[:api_key])
+    auto_login(@user)
+
 
     if @user
       render json: {'status': 'Login successful'}, status: :ok
@@ -13,5 +14,9 @@ class Api::V1::UserSessionsController < ApplicationController
   def destroy
     logout
     render json: {'status': 'Logged out'}, status: :ok
+  end
+
+  def user_sessions_params
+    params.require(:api_key)
   end
 end
