@@ -1,8 +1,6 @@
 class Api::V1::UserSessionsController < ApplicationController
   def create
-    @user = User.find_by(email: params[:email], api_key: params[:api_key])
-    auto_login(@user)
-
+    @user = login(params[:email], params[:password])
 
     if @user
       render json: {'status': 'Login successful'}, status: :ok
@@ -17,6 +15,6 @@ class Api::V1::UserSessionsController < ApplicationController
   end
 
   def user_sessions_params
-    params.require(:api_key)
+    params.require(:email, :password)
   end
 end

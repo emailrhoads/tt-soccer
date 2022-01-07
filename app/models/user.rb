@@ -7,8 +7,14 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   before_create :default_api_key
+  after_create :create_team_and_players
 
   def default_api_key
-    self.api_key ||= SecureRandom.uuid
+    self.api_key = SecureRandom.uuid
+  end
+
+  def create_team_and_players
+    team = Team.seed(self)
+    Player.seed_for_team(team)
   end
 end
