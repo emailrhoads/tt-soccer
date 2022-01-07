@@ -49,15 +49,16 @@ RSpec.describe "/api/v1/users", type: :request do
         }.to change(User, :count).by(1)
       end
 
-      it "renders a JSON response with the new user" do
+      it "renders a JSON response with the new user", :focus do
         post "/api/v1/register",
              params: { user: valid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:created)
+        expect(response_json.keys).to eq(['email', 'api_key'])
         expect(response.content_type).to match(a_string_including("application/json"))
       end
     end
 
-    context "with invalid parameters", :focus do
+    context "with invalid parameters" do
       it "does not create a new User" do
         expect {
           post "/api/v1/register",

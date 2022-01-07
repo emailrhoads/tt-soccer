@@ -1,5 +1,6 @@
 class Api::V1::UserSessionsController < ApplicationController
   def create
+    binding.pry
     @user = login(params[:email], params[:password])
 
     if @user
