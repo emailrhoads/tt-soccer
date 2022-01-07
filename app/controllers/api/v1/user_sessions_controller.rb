@@ -3,15 +3,14 @@ class Api::V1::UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_back_or_to(:users, notice: 'Login successful')
+      render json: {'status': 'Login successful'}, status: :ok
     else
-      flash.now[:alert] = 'Login failed'
-      render action: 'new'
+      render json: {'status': 'Login failed'}, status: :unauthorized
     end
   end
 
   def destroy
     logout
-    redirect_to(:users, notice: 'Logged out!')
+    render json: {'status': 'Logged out'}, status: :ok
   end
 end

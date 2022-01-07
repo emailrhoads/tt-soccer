@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       # authentication
-      resources :users, only: [:create, :show]
+      resources :users, only: [:create]
       resource :user_sessions, only: [:create, :destroy, :show]
       post 'register' => 'users#create'
       post 'login' => 'user_sessions#create'
