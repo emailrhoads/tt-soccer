@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -5,8 +7,8 @@ RSpec.describe User, type: :model do
     it 'requires a valid email address' do
       subject = described_class.new(
         email: 'badEmail@',
-        password: 1234567890,
-        password_confirmation: 1234567890
+        password: 1_234_567_890,
+        password_confirmation: 1_234_567_890
       )
       expect(subject.errors)
     end

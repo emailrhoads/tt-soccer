@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       # authentication
       resources :users, only: [:create]
-      resource :user_sessions, only: [:create, :destroy, :show]
+      resource :user_sessions, only: %i[create destroy show]
       post 'register' => 'users#create'
       post 'login' => 'user_sessions#create'
       get 'logout' => 'user_sessions#destroy'

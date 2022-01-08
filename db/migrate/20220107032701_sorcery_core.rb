@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SorceryCore < ActiveRecord::Migration[7.0]
   def change
     create_table :users do |t|
@@ -6,7 +8,7 @@ class SorceryCore < ActiveRecord::Migration[7.0]
       t.string :salt
       t.string :api_key, null: false
 
-      t.timestamps                null: false
+      t.timestamps null: false
     end
   end
 end

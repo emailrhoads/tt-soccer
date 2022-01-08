@@ -1,0 +1,6 @@
+test_team:
+  balance: 400_000
+  user: test_user
+  name: Test Team
+  country: Andorra
+
