@@ -24,6 +24,9 @@ module JohnRhoads
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
-    config.api_only = true
+    config.api_only = false
+
+    # We want to user structure.sql in case we have views and etc in the future
+    config.active_record.schema_format = :sql
   end
 end

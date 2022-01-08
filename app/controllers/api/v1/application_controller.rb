@@ -3,7 +3,8 @@
 module Api
   module V1
     class ApplicationController < ActionController::API
-      protect_from_forgery with: :null_session
+      # FIXME: WE need CSRF protection? Or is this autofixed in Rails7?
+      # protect_from_forgery with: :null_session
     end
   end
 end
