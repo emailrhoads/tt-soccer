@@ -7,7 +7,7 @@ class CreateTeams < ActiveRecord::Migration[7.0]
       t.string :country, null: false
       t.string :name, null: false
       t.decimal :balance, null: false
-      
+
       t.timestamps
     end
   end

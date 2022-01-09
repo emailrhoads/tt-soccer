@@ -5,11 +5,11 @@ module Enum
   class Position < ApplicationRecord
     self.abstract_class = true
 
-    VALUES = [
-      'goalkeeper',
-      'defender',
-      'midfielder',
-      'attacker'
+    VALUES = %w[
+      goalkeeper
+      defender
+      midfielder
+      attacker
     ].freeze
   end
 end

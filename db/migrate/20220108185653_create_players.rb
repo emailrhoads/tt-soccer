@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePlayers < ActiveRecord::Migration[7.0]
   def change
     create_table :players do |t|
@@ -10,7 +12,7 @@ class CreatePlayers < ActiveRecord::Migration[7.0]
       t.string :last_name, null: false
       t.decimal :market_value, null: false
       t.string :position, null: false
-      
+
       t.timestamps
     end
   end

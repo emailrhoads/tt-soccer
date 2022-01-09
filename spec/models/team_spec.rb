@@ -40,7 +40,7 @@ RSpec.describe Team, type: :model do
   describe '#seed', :focus do
     let(:user) { users(:test_user) }
     let(:player_count) do
-      described_class.send(:player_position_seed_map).sum{ |pos, qty| qty }
+      described_class.send(:player_position_seed_map).sum { |_pos, qty| qty }
     end
 
     it 'will create a team for a user' do

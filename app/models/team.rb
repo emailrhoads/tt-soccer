@@ -10,8 +10,6 @@ class Team < ApplicationRecord
   validates :balance, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :country, presence: true, inclusion: { in: Enum::Country::VALUES }
   validates :name, presence: true
-  
-
 
   # Used to create a new team when a user registers
   def self.seed(user)
@@ -39,7 +37,7 @@ class Team < ApplicationRecord
         goalkeeper: 3,
         defender: 6,
         midfielder: 6,
-        attacker: 5,
+        attacker: 5
       }
     end
   end
