@@ -36,11 +36,11 @@ Helpful take-home project guidelines:
 • Please join the meeting room for this final interview on time. If you miss your interview without providing any prior notice, your application may be paused for 6 months.
 
 TODO: 
-  - Add API to see market list
+  - Fix sessions/login
+  - Create trade API
   - Only allow owner to edit team
   - Only allow owner to edit players
   
-  - Fix sessions/login
   - Remove API Keys
   - Add index to market_value on player
   - Add gitlab-ci.yml

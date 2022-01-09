@@ -31,19 +31,25 @@ RSpec.describe '/api/v1/trades', type: :request do
       }
     end
 
-    it 'will not work if invalid player id' do
-      post base_url, params: invalid_params, headers: valid_headers, as: :json
-      expect(response.successful?).to eq(false)
-      expect(response_json.keys).to include('error')
+    context 'when logged in' do
+      it 'will not work if invalid player id' do
+        expect(Player).not_to receive(:trade)
+        post base_url, params: invalid_params, headers: valid_headers, as: :json
+        expect(response.successful?).to eq(false)
+        expect(response_json.keys).to include('error')
+      end
+
+      it 'will create and execute a new trade' do
+        put_players_on_transfer_list
+        expect(Player).to receive(:trade)
+        post base_url, params: valid_params, headers: valid_headers, as: :json
+      end
     end
 
-    it 'will create and execute a new trade' do
-      put_players_on_transfer_list
+    it 'will not work if user is not logged in', :focus do
       post base_url, params: valid_params, headers: valid_headers, as: :json
-      binding.pry
-    end
-
-    it 'will not work if user is not logged in' do
+      expect(response.successful?).to eq(false)
+      expect(response_json['error']).to match(/you must login/i)
     end
   end
 end

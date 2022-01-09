@@ -12,7 +12,7 @@ RSpec.describe '/api/v1/teams', type: :request do
     {}
   end
 
-  describe 'POST /show', :focus do
+  describe 'POST /show' do
     it 'will display a team for the user' do
       get base_url, headers: valid_headers, as: :json
       expect(response_json).to eq(team.as_json)
@@ -23,7 +23,7 @@ RSpec.describe '/api/v1/teams', type: :request do
     end
   end
 
-  describe 'POST /update', :focus do
+  describe 'POST /update' do
     let(:new_name) { 'my new name' }
     let(:new_country) { 'Angola' }
 

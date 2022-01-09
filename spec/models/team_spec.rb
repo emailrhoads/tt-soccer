@@ -49,7 +49,7 @@ RSpec.describe Team, type: :model do
       market_values.each { |mv| create_player_with_market_value(mv) }
     end
 
-    it 'will sum the TMV of all players', :focus do
+    it 'will sum the TMV of all players' do
       expect(team.total_market_value).to eq(market_values.sum)
     end
   end

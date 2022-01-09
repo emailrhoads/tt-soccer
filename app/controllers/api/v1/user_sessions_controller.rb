@@ -14,6 +14,17 @@ module Api
         end
       end
 
+      def show
+        if logged_in?
+          render json: { success: true, user: current_user }
+        else
+          render json: {
+            error: true,
+            error_message: 'No current session'
+          }
+        end
+      end
+
       def destroy
         logout
         render json: { 'status': 'Logged out' }, status: :ok

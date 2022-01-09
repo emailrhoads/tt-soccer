@@ -4,9 +4,11 @@ module Api
   module V1
     # transfer list and trading controller
     class TradesController < ApplicationController
+      before_action :check_login, only: [:create]
       before_action :set_player, only: %i[create]
 
       def create
+        binding.pry
         # lookup user
         # lookup team
 
