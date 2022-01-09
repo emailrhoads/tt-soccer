@@ -7,6 +7,7 @@ ruby '3.0.0'
 
 gem 'bootsnap', require: false
 gem 'email_validator'
+gem 'faker'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.1'
 gem 'sorcery'

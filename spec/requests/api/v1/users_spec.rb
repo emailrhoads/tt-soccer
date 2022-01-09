@@ -44,7 +44,7 @@ RSpec.describe '/api/v1/users', type: :request do
 
   describe 'POST /create' do
     context 'with valid parameters' do
-      it 'creates a new User', :focus do
+      it 'creates a new User' do
         expect do
           post '/api/v1/register',
                params: { user: valid_attributes }, headers: valid_headers, as: :json
