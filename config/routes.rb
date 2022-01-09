@@ -14,9 +14,9 @@ Rails.application.routes.draw do
       get 'session' => 'user_sessions#show'
 
       # models
-      resources :teams, only: [:show, :update] do
+      resources :teams, only: %i[show update] do
         scope module: :teams do
-          resource :players, only: [:index, :show, :update]
+          resource :players, only: %i[index show update]
         end
       end
     end

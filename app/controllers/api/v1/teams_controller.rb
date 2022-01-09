@@ -4,7 +4,7 @@ module Api
   module V1
     # allow users edit Teams via API
     class TeamsController < ApplicationController
-      before_action :set_team, only: [:show, :update, :destroy]
+      before_action :set_team, only: %i[show update destroy]
 
       def show
         render json: @team

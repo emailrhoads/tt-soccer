@@ -42,8 +42,8 @@ RSpec.describe '/api/v1/users', type: :request do
 
       it 'will create a team and players for the new user', :aggregate_failures do
         post '/api/v1/register',
-               params: { user: valid_attributes }, headers: valid_headers, as: :json
-        new_user_id = response_json.dig('id')
+             params: { user: valid_attributes }, headers: valid_headers, as: :json
+        new_user_id = response_json['id']
         new_user = User.find(new_user_id)
         new_teams = new_user.teams
         expect(new_teams).to be_present
