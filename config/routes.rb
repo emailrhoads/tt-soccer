@@ -12,6 +12,13 @@ Rails.application.routes.draw do
       post 'login' => 'user_sessions#create'
       get 'logout' => 'user_sessions#destroy'
       get 'session' => 'user_sessions#show'
+
+      # models
+      resources :teams, only: [:show, :update] do
+        scope module: :teams do
+          resource :players, only: [:index, :show, :update]
+        end
+      end
     end
   end
 end

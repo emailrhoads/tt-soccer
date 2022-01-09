@@ -46,7 +46,7 @@ RSpec.describe Player, type: :model do
     end
   end
 
-  describe '#trade', :focus do
+  describe '#trade' do
     let(:asking_price) { 1 }
     let(:selling_team) { teams(:test_team) }
     let(:buying_team) { teams(:team1) }

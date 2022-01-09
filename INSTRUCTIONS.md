@@ -38,12 +38,15 @@ Helpful take-home project guidelines:
 TODO: 
   - Only allow certain fields to be edited on a Team via API
   - Only allow certain fields to be edited on Player via API
+  - Add API to see market list
   - Only allow owner to edit team
   - Only allow owner to edit players
+  
   - Fix sessions/login
   - Remove API Keys
   - Add index to market_value on player
   - Add gitlab-ci.yml
+  - ? seeds user's team and player in transaction
   - ? Add bundle audit
   - ? Switch off SQL3
   - ? Bolster up enumerations into Objects?

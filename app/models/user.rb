@@ -12,14 +12,12 @@ class User < ApplicationRecord
   has_many :teams
 
   before_create :default_api_key
-  # after_create :create_team_and_players
 
   def default_api_key
     self.api_key = SecureRandom.uuid
   end
 
-  def create_team_and_players
-    _team = Team.seed(self)
-    # Player.seed_for_team(team)
+  def seed_team_and_players
+    Team.seed(self)
   end
 end
