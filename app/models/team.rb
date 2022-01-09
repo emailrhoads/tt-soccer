@@ -11,7 +11,12 @@ class Team < ApplicationRecord
   validates :country, presence: true, inclusion: { in: Enum::Country::VALUES }
   validates :name, presence: true
 
-  # Used to create a new team when a user registers
+  # total value of all players on the team
+  def total_market_value
+    players.sum(:market_value)
+  end
+
+  # when a user registers, create a team and fill it with players
   def self.seed(user)
     team = create!(
       user: user,

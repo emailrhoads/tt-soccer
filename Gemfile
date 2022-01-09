@@ -15,11 +15,13 @@ gem 'sqlite3', '~> 1.4'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
+  # gem 'audit' # fix bundle conflicts
   gem 'city-state' # used to generate Country enumeration
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'pry'
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'rubocop-rspec'
 end
 
 group :development do

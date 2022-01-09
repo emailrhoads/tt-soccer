@@ -11,7 +11,7 @@ class Player < ApplicationRecord
   validates :country, presence: true, inclusion: { in: Enum::Country::VALUES }
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :market_value, presence: true, numericality: { greater_than_or_equal_to: INITIAL_MARKET_VALUE }
+  validates :market_value, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :position, presence: true,
                        inclusion: {
                          in: Enum::Position::VALUES,
@@ -23,12 +23,11 @@ class Player < ApplicationRecord
   scope :on_transfer_list, -> { where.not(asking_price: false) }
 
   def default_values
-    self.market_value = INITIAL_MARKET_VALUE
-
     self.age ||= rand(18..40)
     self.country ||= Enum::Country::VALUES.sample
     self.first_name ||= Faker::Name.first_name
     self.last_name ||= Faker::Name.last_name
+    self.market_value ||= INITIAL_MARKET_VALUE
   end
 
   def self.trade(buying_team:, player:)
