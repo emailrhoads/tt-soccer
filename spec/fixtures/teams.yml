@@ -1,12 +1,12 @@
 test_team:
   balance: 400_000
   user: test_user
-  name: Test Team
+  name: Test User Team
   country: Andorra
 
-team_1:
+team1:
   balance: 5_000_000
-  user: user_1
+  user: user1
   name: User 1 Team
   country: Andorra
 

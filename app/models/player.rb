@@ -31,7 +31,7 @@ class Player < ApplicationRecord
     self.last_name ||= Faker::Name.last_name
   end
 
-  def self.trade(buying_team:, player: )
+  def self.trade(buying_team:, player:)
     raise 'Player not for sale' if player.asking_price.nil?
     raise 'Cannot purchase your own player' if player.team == buying_team
     raise 'Insufficient funds' if buying_team.balance < player.asking_price

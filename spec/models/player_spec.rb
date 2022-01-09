@@ -49,7 +49,7 @@ RSpec.describe Player, type: :model do
   describe '#trade', :focus do
     let(:asking_price) { 1 }
     let(:selling_team) { teams(:test_team) }
-    let(:buying_team) { teams(:team_1) }
+    let(:buying_team) { teams(:team1) }
     let(:player) { create_valid_player(selling_team) }
 
     before { player.update!(asking_price: asking_price) }
@@ -61,20 +61,20 @@ RSpec.describe Player, type: :model do
 
     context 'buying team' do
       it 'will not allow a trade if you already own the player' do
-        expect do 
+        expect do
           described_class.trade(buying_team: selling_team, player: player)
         end.to raise_error(/Cannot purchase your own player/)
       end
 
       it 'will not allow the trade if the team lacks sufficient funds' do
         player.update!(asking_price: buying_team.balance + 1)
-        expect do 
+        expect do
           described_class.trade(buying_team: buying_team, player: player)
         end.to raise_error(/Insufficient funds/)
       end
 
       it 'will decrease budget by players asking price' do
-        expect do 
+        expect do
           described_class.trade(buying_team: buying_team, player: player)
         end.to change(buying_team, :balance).by(-asking_price)
       end
@@ -83,19 +83,19 @@ RSpec.describe Player, type: :model do
     context 'player' do
       it 'cannot be bought if not on the market list' do
         player.update!(asking_price: nil)
-        expect do 
+        expect do
           described_class.trade(buying_team: buying_team, player: player)
         end.to raise_error(/Player not for sale/)
       end
 
       it 'will transfer ownership of the player' do
-        expect do 
+        expect do
           described_class.trade(buying_team: buying_team, player: player)
         end.to change(player, :team).from(selling_team).to(buying_team)
       end
-  
+
       it 'will increase the player market value' do
-        expect do 
+        expect do
           described_class.trade(buying_team: buying_team, player: player)
         end.to change(player, :market_value)
       end
@@ -110,7 +110,7 @@ RSpec.describe Player, type: :model do
 
     context 'selling_team' do
       it 'will decrease budget by players asking price' do
-        expect do 
+        expect do
           described_class.trade(buying_team: buying_team, player: player)
         end.to change(selling_team, :balance).by(asking_price)
       end
