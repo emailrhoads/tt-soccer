@@ -43,6 +43,8 @@ TODO:
   - Fix sessions/login
   - Remove API Keys
   - Add index to market_value on player
+  - Add gitlab-ci.yml
+  - ? Add bundle audit
   - ? Switch off SQL3
   - ? Bolster up enumerations into Objects?
   - ? Add active admin to make things manageable?

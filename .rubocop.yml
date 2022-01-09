@@ -2,6 +2,7 @@ inherit_from: .rubocop_todo.yml
 
 Metrics/BlockLength:
   Exclude:
+    - "config/environments/*.rb"
     - "config/routes.rb"
     - "spec/**/*.rb"
 
