@@ -32,10 +32,9 @@ RSpec.describe '/api/v1/trades', type: :request do
     end
 
     context 'when logged in' do
-      before { auto_login(team.user) }
+      before { login(team.user) }
 
       it 'will not work if invalid player id' do
-        login_as_test_user
         expect(Player).not_to receive(:trade)
         post base_url, params: invalid_params, headers: valid_headers, as: :json
         expect(response.successful?).to eq(false)
@@ -44,7 +43,7 @@ RSpec.describe '/api/v1/trades', type: :request do
 
       it 'will create and execute a new trade' do
         put_players_on_transfer_list
-        expect(Player).to receive(:trade)
+        expect(Player).to receive(:trade).with({ buying_team: team, player: player })
         post base_url, params: valid_params, headers: valid_headers, as: :json
       end
     end

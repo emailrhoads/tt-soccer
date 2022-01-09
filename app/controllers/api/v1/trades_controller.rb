@@ -8,10 +8,8 @@ module Api
       before_action :set_player, only: %i[create]
 
       def create
-        # lookup user
-        # lookup team
-
-        result = Player.trade(buying_team: Team.first, player: @player)
+        team = current_user.team
+        result = Player.trade(buying_team: team, player: @player)
         render json: result
       rescue StandardError => e
         render json: { error: e }, status: :unprocessable_entity

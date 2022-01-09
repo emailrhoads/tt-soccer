@@ -9,7 +9,6 @@ module Api
         @user = User.new(user_params)
 
         if @user.save
-          @user.seed_team_and_players # FIXME: This should really be in a transaction
           auto_login(@user)
           render json: @user.slice(:id, :email), status: :created
         else
@@ -18,6 +17,8 @@ module Api
       end
 
       private
+
+      def auto_login_user; end
 
       def set_user
         @user = User.find(params[:id])

@@ -20,9 +20,8 @@
 def login(user, password = 'supersecret')
   # post the login and follow through
   # ensure that the password you set here conforms to what you have set in your
-  # fixtures/factory. and also ensure that your session creation URL is set
-  # appropriately: whether it be: user_sessions_path (if you have been following the tutorials) or otherwise.
-  post user_sessions_path, params: { email: user.email, password: password }
+  # fixtures/factory.
+  post api_v1_user_sessions_path, params: { email: user.email, password: password }
 end
 
 def response_json

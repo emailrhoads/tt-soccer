@@ -32,6 +32,12 @@ RSpec.describe '/api/v1/users', type: :request do
         end.to change(User, :count).by(1)
       end
 
+      it 'will log the user in' do
+        expect_any_instance_of(Api::V1::UsersController).to receive(:auto_login)
+        post '/api/v1/register',
+             params: { user: valid_attributes }, headers: valid_headers, as: :json
+      end
+
       it 'renders a JSON response with the new user' do
         post '/api/v1/register',
              params: { user: valid_attributes }, headers: valid_headers, as: :json

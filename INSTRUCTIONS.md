@@ -36,8 +36,6 @@ Helpful take-home project guidelines:
 • Please join the meeting room for this final interview on time. If you miss your interview without providing any prior notice, your application may be paused for 6 months.
 
 TODO: 
-  - Fix sessions/login
-  - Create trade API
   - Only allow owner to edit team
   - Only allow owner to edit players
   
