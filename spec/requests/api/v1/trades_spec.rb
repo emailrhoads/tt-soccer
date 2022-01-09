@@ -15,7 +15,7 @@ RSpec.describe '/api/v1/trades', type: :request do
   end
 
   def put_players_on_transfer_list
-    players.first(2).each { |p| p.update!(asking_price: 1) }
+    players.first(2).each { |p| p.update!(asking_price: 10) }
   end
 
   describe 'POST /api/v1/trades' do
@@ -45,6 +45,13 @@ RSpec.describe '/api/v1/trades', type: :request do
         put_players_on_transfer_list
         expect(Player).to receive(:trade).with({ buying_team: team, player: player })
         post base_url, params: valid_params, headers: valid_headers, as: :json
+      end
+
+      it 'will gracefully handle an error scenario' do
+        put_players_on_transfer_list
+        team.update!(balance: 0)
+        post base_url, params: valid_params, headers: valid_headers, as: :json
+        expect(response.successful?).to eq(false)
       end
     end
 

@@ -18,8 +18,9 @@ RSpec.describe '/api/v1/teams', type: :request do
       expect(response_json).to eq(team.as_json)
     end
 
-    xit 'will return an object not found if not corresponding team' do
-      get base_url, headers: valid_headers, as: :json
+    it 'will return an object not found if not corresponding team', :focus do
+      get "/api/v1/teams/99999999" , headers: valid_headers, as: :json
+      expect(response.successful?).to eq(false)
     end
   end
 
@@ -32,6 +33,13 @@ RSpec.describe '/api/v1/teams', type: :request do
         name: new_name,
         country: new_country
       }
+    end
+
+    context 'when not logged in' do
+      it 'requires user to be logged in' do
+        
+
+      end
     end
 
     context 'with valid parameters' do

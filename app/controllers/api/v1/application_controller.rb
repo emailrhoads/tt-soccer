@@ -7,12 +7,8 @@ module Api
       # FIXME: WE need CSRF protection? Or is this autofixed in Rails7?
       # protect_from_forgery with: :null_session
 
-      def team_owner?
-        @team.user == current_user
-      end
-
-      def confirm_authorized
-        render_unauthorized_response unless authorized?
+      def require_ownership
+        render_unauthorized_response unless @team.user == current_user
       end
 
       def render_unauthorized_response
