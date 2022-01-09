@@ -16,15 +16,15 @@ RSpec.describe '/api/v1/teams/<team.id>/players', type: :request do
   describe 'GET /index', :focus do
     it 'will display all players for a team' do
       get api_v1_team_players_url(team_id: team.id),
-        headers: valid_headers, as: :json
+          headers: valid_headers, as: :json
       expect(response_json).to eq(team.players.as_json)
     end
   end
 
   describe 'GET /show' do
     it 'will display a player' do
-      get api_v1_team_player_path(player, team_id: team.id), 
-        headers: valid_headers, as: :json
+      get api_v1_team_player_path(player, team_id: team.id),
+          headers: valid_headers, as: :json
       expect(response_json).to eq(player.as_json)
     end
   end

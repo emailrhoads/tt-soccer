@@ -4,7 +4,7 @@ test_team:
   name: Test User Team
   country: Andorra
 
-team1:
+team_with_no_players:
   balance: 5_000_000
   user: user1
   name: User 1 Team

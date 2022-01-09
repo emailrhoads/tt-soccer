@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get 'session' => 'user_sessions#show'
 
       # models
+      get 'api/v1/transfer_list' => 'players#transfer_list'
       resources :teams, only: %i[show update] do
         scope module: :teams do
           resources :players, only: %i[index show update]

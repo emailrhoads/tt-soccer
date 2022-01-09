@@ -39,7 +39,7 @@ RSpec.describe Team, type: :model do
 
   describe '.total_market_value' do
     let(:market_values) { [10, 22, 55] }
-    let(:team) { teams(:test_team) }
+    let(:team) { teams(:team_with_no_players) }
 
     def create_player_with_market_value(market_value)
       Player.create!(team: team, position: 'goalkeeper').update!(market_value: market_value)
@@ -49,7 +49,7 @@ RSpec.describe Team, type: :model do
       market_values.each { |mv| create_player_with_market_value(mv) }
     end
 
-    it 'will sum the TMV of all players' do
+    it 'will sum the TMV of all players', :focus do
       expect(team.total_market_value).to eq(market_values.sum)
     end
   end

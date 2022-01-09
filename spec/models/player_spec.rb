@@ -49,7 +49,7 @@ RSpec.describe Player, type: :model do
   describe '#trade' do
     let(:asking_price) { 1 }
     let(:selling_team) { teams(:test_team) }
-    let(:buying_team) { teams(:team1) }
+    let(:buying_team) { teams(:team_with_no_players) }
     let(:player) { create_valid_player(selling_team) }
 
     before { player.update!(asking_price: asking_price) }
