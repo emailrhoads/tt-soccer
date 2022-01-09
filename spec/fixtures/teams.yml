@@ -4,3 +4,9 @@ test_team:
   name: Test Team
   country: Andorra
 
+team_1:
+  balance: 5_000_000
+  user: user_1
+  name: User 1 Team
+  country: Andorra
+

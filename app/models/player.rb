@@ -31,17 +31,18 @@ class Player < ApplicationRecord
     self.last_name ||= Faker::Name.last_name
   end
 
-  def self.trade(buying_team, player)
+  def self.trade(buying_team:, player: )
+    raise 'Player not for sale' if player.asking_price.nil?
     raise 'Cannot purchase your own player' if player.team == buying_team
-
-    # FIXME: do we need this guard, will validations do it for us anyway?
-    raise 'Insufficient funds' if (buying_team.balance - player.asking_price).negative?
+    raise 'Insufficient funds' if buying_team.balance < player.asking_price
 
     selling_team = player.team
     ActiveRecord::Base.transaction do
       update_trade_balances(buying_team, player, selling_team)
       update_player_attributes(buying_team, player)
     end
+
+    true
   end
 
   class << self
@@ -49,14 +50,14 @@ class Player < ApplicationRecord
 
     # Add Player's asking price to selling team and remove from buying team
     def update_trade_balances(buying_team, player, selling_team)
-      selling_team.balance = + player.asking_price
-      buying_team.balance = - player.asking_price
+      asking_price = player.asking_price
+      selling_team.balance += asking_price
+      buying_team.balance -= asking_price
     end
 
     # Change ownership of Player and make any trade-driven adjustments
     def update_player_attributes(buying_team, player)
       player.team = buying_team
-
       player.asking_price = nil # remove from market list
 
       # when a player is traded we increase their value by random amount
