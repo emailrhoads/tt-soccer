@@ -16,6 +16,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
   # gem 'audit' # fix bundle conflicts
+  gem 'bullet'
   gem 'city-state' # used to generate Country enumeration
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'pry'

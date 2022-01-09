@@ -1,7 +1,7 @@
 ## Instructions
 Write a soccer online manager game API
 * You need to write a RESTful or GraphQL API for a simple application where football/soccer fans will create fantasy teams and will be able to sell or buy players.
-* User must be able to create an account and log in using the API. << Do I need session management then??? Can't we force an API key?
+* User must be able to create an account and log in using the API. 
 * Each user can have only one team (user is identified by an email)
 * When the user is signed up, they should get a team of 20 players (the system should generate players):
   * 3 goalkeepers
@@ -34,3 +34,16 @@ Helpful take-home project guidelines:
 • If you schedule your final interview after the 7-day deadline, make sure to submit your completed project and all code to the private repository before the deadline. Everything that is submitted after the deadline will not be taken into consideration.
 • The final deadline to submit the code is 12 hours before the meeting time so that it can be reviewed. Anything that is submitted after this time will not be taken into consideration.
 • Please join the meeting room for this final interview on time. If you miss your interview without providing any prior notice, your application may be paused for 6 months.
+
+TODO: 
+  - Only allow certain fields to be edited on a Team via API
+  - Only allow certain fields to be edited on Player via API
+  - Only allow owner to edit team
+  - Only allow owner to edit players
+  - Fix sessions/login
+  - Remove API Keys
+  - Add index to market_value on player
+  - ? Switch off SQL3
+  - ? Bolster up enumerations into Objects?
+  - ? Add active admin to make things manageable?
+  

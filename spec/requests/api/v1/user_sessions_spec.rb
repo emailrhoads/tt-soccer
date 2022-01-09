@@ -26,7 +26,7 @@ RSpec.describe 'UserSessions', type: :request do
     end
 
     context 'login succeeds' do
-      it 'if given proper credentials' do
+      xit 'if given proper credentials' do
         post '/api/v1/login', params: valid_login_params
         expect(response).to have_http_status(:success)
       end
