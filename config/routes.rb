@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       # models
       resources :teams, only: %i[show update] do
         scope module: :teams do
-          resource :players, only: %i[index show update]
+          resources :players, only: %i[index show update]
         end
       end
     end

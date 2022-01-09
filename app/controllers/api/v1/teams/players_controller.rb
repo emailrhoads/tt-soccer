@@ -5,33 +5,38 @@ module Api
     module Teams
       # interact with players on a team
       class PlayersController < ApplicationController
-        before_action :set_team, only: %i[show update destroy]
+        before_action :set_team, only: %i[index show update]
+        before_action :set_player, only: %i[show update]
 
-        def show
-          render json: @team
+        def index
+          records = @team.players
+          render json: records
         end
 
-        # PATCH/PUT /teams/1 or /teams/1.json
+        def show
+          render json: @player
+        end
+
         def update
-          if @team.update(team_params)
-            render json: @team
+          if @player.update(player_params)
+            render json: @player
           else
-            render json: @team.errors, status: :unprocessable_entity
+            render json: @player.errors, status: :unprocessable_entity
           end
         end
 
-        # TODO: Should we add destroy so a user can restart the game if they want?
-
         private
 
-        # Use callbacks to share common setup or constraints between actions.
+        def set_player
+          @player = Player.find(params[:id])
+        end
+
         def set_team
           @team = Team.find(params[:team_id])
         end
 
-        # Only allow a list of trusted parameters through.
-        def team_params
-          params.require(:team).permit(:name, :country)
+        def player_params
+          params.require(:player).permit(:first_name, :last_name, :country)
         end
       end
     end
