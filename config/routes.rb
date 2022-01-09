@@ -13,8 +13,11 @@ Rails.application.routes.draw do
       get 'logout' => 'user_sessions#destroy'
       get 'session' => 'user_sessions#show'
 
+      # trading routes
+      resources :trades, only: %i[create]
+      resources :transfer_list, only: %i[index]
+
       # models
-      get 'api/v1/transfer_list' => 'players#transfer_list'
       resources :teams, only: %i[show update] do
         scope module: :teams do
           resources :players, only: %i[index show update]

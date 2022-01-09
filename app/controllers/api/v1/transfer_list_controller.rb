@@ -8,10 +8,6 @@ module Api
         records = Player.on_transfer_list
         render json: records
       end
-
-      def patch
-        # FIXME: To implement
-      end
     end
   end
 end
