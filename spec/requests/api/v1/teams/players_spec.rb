@@ -29,7 +29,7 @@ RSpec.describe '/api/v1/teams/<team.id>/players', type: :request do
     end
   end
 
-  describe 'POST /update', :focus do
+  describe 'POST /update' do
     let(:valid_attributes) do
       {
         first_name: 'Fchanged',

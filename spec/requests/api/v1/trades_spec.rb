@@ -32,7 +32,10 @@ RSpec.describe '/api/v1/trades', type: :request do
     end
 
     context 'when logged in' do
+      before { auto_login(team.user) }
+
       it 'will not work if invalid player id' do
+        login_as_test_user
         expect(Player).not_to receive(:trade)
         post base_url, params: invalid_params, headers: valid_headers, as: :json
         expect(response.successful?).to eq(false)
@@ -46,7 +49,7 @@ RSpec.describe '/api/v1/trades', type: :request do
       end
     end
 
-    it 'will not work if user is not logged in', :focus do
+    it 'will not work if user is not logged in' do
       post base_url, params: valid_params, headers: valid_headers, as: :json
       expect(response.successful?).to eq(false)
       expect(response_json['error']).to match(/you must login/i)

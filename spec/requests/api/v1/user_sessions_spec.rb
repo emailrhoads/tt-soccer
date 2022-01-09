@@ -26,7 +26,7 @@ RSpec.describe 'UserSessions', type: :request do
     end
 
     context 'login succeeds' do
-      xit 'if given proper credentials' do
+      it 'if given proper credentials' do
         post '/api/v1/login', params: valid_login_params
         expect(response).to have_http_status(:success)
       end
@@ -35,6 +35,7 @@ RSpec.describe 'UserSessions', type: :request do
 
   describe 'GET /destroy' do
     it 'returns http success' do
+      post '/api/v1/login', params: valid_login_params
       get '/api/v1/logout'
       expect(response).to have_http_status(:success)
     end

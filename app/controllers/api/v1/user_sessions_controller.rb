@@ -33,6 +33,10 @@ module Api
       def user_sessions_params
         params.require(:email, :password)
       end
+
+      # FIXME: Sorcery does not play well with Rails API only
+      # so here we are really doing some hackery that would allow CSRF attacks
+      def form_authenticity_token; end
     end
   end
 end
