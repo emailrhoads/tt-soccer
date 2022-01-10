@@ -3,22 +3,23 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Install ruby version as defined `.ruby-version` file
 
-* System dependencies
+```sh
+git clone https://git.toptal.com/screening/John-Rhoads.git
+bundle install
+bundle exec rake db:create db:structure:load
+```
 
-* Configuration
+## Test Suite
 
-* Database creation
+```sh
+bundle exec rpsec
+```
 
-* Database initialization
+## Deployment Instructions
 
-* How to run the test suite
+This app is not ready for production as it uses SQLite as the DB still
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

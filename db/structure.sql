@@ -13,6 +13,7 @@ FOREIGN KEY ("team_id")
   REFERENCES "teams" ("id")
 );
 CREATE INDEX "index_players_on_team_id" ON "players" ("team_id");
+CREATE INDEX "index_players_on_team_id_and_market_value" ON "players" ("team_id", "market_value");
 INSERT INTO "schema_migrations" (version) VALUES
 ('20220107032701'),
 ('20220107051551'),
