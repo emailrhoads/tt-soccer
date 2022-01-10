@@ -16,6 +16,7 @@ CREATE INDEX "index_players_on_team_id" ON "players" ("team_id");
 INSERT INTO "schema_migrations" (version) VALUES
 ('20220107032701'),
 ('20220107051551'),
-('20220108185653');
+('20220108185653'),
+('20220110003231');
 
 

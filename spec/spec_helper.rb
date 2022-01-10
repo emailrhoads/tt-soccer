@@ -16,29 +16,9 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-def expect_authorization_error
-  expect(response.successful?).to eq(false)
-  expect(response_json).to eq({ 'error' => 'Access denied' })
-end
-
-def expect_not_logged_in_error
-  expect(response.successful?).to eq(false)
-  expect(response_json).to eq({ 'error' => 'You must login first' })
-end
-
-# from https://github.com/Sorcery/sorcery/wiki/Testing-Rails
-def login(user, password = 'supersecret')
-  # post the login and follow through
-  # ensure that the password you set here conforms to what you have set in your
-  # fixtures/factory.
-  post api_v1_user_sessions_path, params: { email: user.email, password: password }
-end
-
-def response_json
-  JSON.parse(@response.body)
-end
-
 RSpec.configure do |config|
+
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
