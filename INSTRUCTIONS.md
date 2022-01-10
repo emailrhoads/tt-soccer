@@ -36,7 +36,6 @@ Helpful take-home project guidelines:
 • Please join the meeting room for this final interview on time. If you miss your interview without providing any prior notice, your application may be paused for 6 months.
 
 TODO:   
-  - ? Add bundle audit
   - ? Switch off SQL3
   - ? Bolster up enumerations into Objects?
   - ? Add active admin to make things manageable?

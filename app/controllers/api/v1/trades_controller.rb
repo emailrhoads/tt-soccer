@@ -19,11 +19,7 @@ module Api
 
       def set_player
         @player = Player.find_by(id: params[:player_id])
-        invalid_player unless @player
-      end
-
-      def invalid_player
-        render json: { error: "No player with id #{params[:player_id]}" }, status: :unprocessable_entity
+        no_such_player unless @player
       end
     end
   end

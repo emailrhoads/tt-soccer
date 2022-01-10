@@ -9,10 +9,10 @@ module Api
       before_action :require_ownership, only: %i[update]
 
       def show
+        # FIXME: do we want team and players to appear here? probably...
         render json: @team
       end
 
-      # PATCH/PUT /teams/1 or /teams/1.json
       def update
         if @team.update(team_params)
           render json: @team
@@ -25,13 +25,11 @@ module Api
 
       private
 
-      # Use callbacks to share common setup or constraints between actions.
       def set_team
         @team = Team.find_by(id: params[:id])
         no_such_team unless @team
       end
 
-      # Only allow a list of trusted parameters through.
       def team_params
         params.require(:team).permit(:name, :country)
       end

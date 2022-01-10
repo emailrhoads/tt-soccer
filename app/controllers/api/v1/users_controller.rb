@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    # allow users to regisert via API
+    # allow users to register via API
     class UsersController < ApplicationController
       before_action :require_login, only: [:show]
 
@@ -27,8 +27,6 @@ module Api
       end
 
       private
-
-      def auto_login_user; end
 
       def set_user
         @user = User.find(params[:id])

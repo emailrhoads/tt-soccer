@@ -5,6 +5,9 @@ module Api
     module Teams
       # interact with players on a team
       class PlayersController < ApplicationController
+        # FIXME: we may want a players controller outside of the teams context
+        # if that is the case, we should examine the transfer list controller more
+
         before_action :set_team, only: %i[index show update]
         before_action :set_player, only: %i[show update]
         before_action :require_login, only: %i[update]
@@ -40,7 +43,7 @@ module Api
         end
 
         def player_params
-          params.require(:player).permit(:first_name, :last_name, :country)
+          params.require(:player).permit(:first_name, :last_name, :country, :asking_price)
         end
       end
     end

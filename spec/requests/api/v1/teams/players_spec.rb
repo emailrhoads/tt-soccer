@@ -34,7 +34,8 @@ RSpec.describe '/api/v1/teams/<team.id>/players', type: :request do
       {
         first_name: 'Fchanged',
         last_name: 'Lchanged',
-        country: 'Angola'
+        country: 'Angola',
+        asking_price: 2_000_000
       }
     end
 
