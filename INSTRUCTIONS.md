@@ -24,16 +24,13 @@ Write a soccer online manager game API
 * When a player is transferred to another team, their value should be increased between 10 and 100 percent. Implement a random factor for this purpose.
 * Make it possible to perform all user actions via RESTful or GraphQL API, including authentication.
 
-Please use this private repository to version-control your code:
-https://git.toptal.com/screening/John-Rhoads
-
 Helpful take-home project guidelines:
 
-• This project will be used to evaluate your skills and should be fully functional without any obvious missing pieces. We will evaluate the project as if you were delivering it to a customer.
-• The deadline to submit your completed project is 7 days from the date you received the project requirements.
-• If you schedule your final interview after the 7-day deadline, make sure to submit your completed project and all code to the private repository before the deadline. Everything that is submitted after the deadline will not be taken into consideration.
-• The final deadline to submit the code is 12 hours before the meeting time so that it can be reviewed. Anything that is submitted after this time will not be taken into consideration.
-• Please join the meeting room for this final interview on time. If you miss your interview without providing any prior notice, your application may be paused for 6 months.
+- This project will be used to evaluate your skills and should be fully functional without any obvious missing pieces. We will evaluate the project as if you were delivering it to a customer.
+- The deadline to submit your completed project is 7 days from the date you received the project requirements.
+- If you schedule your final interview after the 7-day deadline, make sure to submit your completed project and all code to the private repository before the deadline. Everything that is submitted after the deadline will not be taken into consideration.
+- The final deadline to submit the code is 12 hours before the meeting time so that it can be reviewed. Anything that is submitted after this time will not be taken into consideration.
+- Please join the meeting room for this final interview on time. If you miss your interview without providing any prior notice, your application may be paused for 6 months.
 
 TODO:   
   - ? Switch off SQL3

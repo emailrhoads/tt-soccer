@@ -22,7 +22,7 @@ RSpec.describe Team, type: :model do
     end
 
     it 'requires a valid country' do
-      subject = described_class.create(valid_attributes.merge('country' => 'Toptal'))
+      subject = described_class.create(valid_attributes.merge('country' => 'TT'))
       expect(subject).not_to be_valid
     end
 

@@ -8,7 +8,7 @@ application up and running.
 Install ruby version as defined `.ruby-version` file
 
 ```sh
-git clone https://git.toptal.com/screening/John-Rhoads.git
+git clone ...
 bundle install
 bundle exec rake db:create db:structure:load
 ```

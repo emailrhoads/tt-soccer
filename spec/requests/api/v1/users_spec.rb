@@ -9,7 +9,7 @@ RSpec.describe '/api/v1/users', type: :request do
 
   let(:valid_attributes) do
     {
-      email: 'john@toptal.com',
+      email: 'john@tt.com',
       password: 'ABCDefghijk',
       password_confirmation: 'ABCDefghijk'
     }
