@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe '/api/v1/teams/<team.id>/players', type: :request do
+RSpec.describe '/api/v1/teams/:team_id/players', type: :request do
   fixtures :users
   fixtures :teams
   fixtures :players
@@ -42,8 +42,8 @@ RSpec.describe '/api/v1/teams/<team.id>/players', type: :request do
     context 'when not logged in' do
       it 'requires login' do
         patch api_v1_team_player_path(player, team_id: team.id),
-              params: { player: valid_attributes }, 
-              headers: valid_headers, 
+              params: { player: valid_attributes },
+              headers: valid_headers,
               as: :json
         expect_not_logged_in_error
       end
@@ -57,8 +57,8 @@ RSpec.describe '/api/v1/teams/<team.id>/players', type: :request do
 
       it 'requires ownership' do
         patch api_v1_team_player_path(player, team_id: team.id),
-              params: { player: valid_attributes }, 
-              headers: valid_headers, 
+              params: { player: valid_attributes },
+              headers: valid_headers,
               as: :json
         expect_authorization_error
       end
@@ -69,8 +69,8 @@ RSpec.describe '/api/v1/teams/<team.id>/players', type: :request do
 
       it 'can update allowed attributes' do
         patch api_v1_team_player_path(player, team_id: team.id),
-              params: { player: valid_attributes }, 
-              headers: valid_headers, 
+              params: { player: valid_attributes },
+              headers: valid_headers,
               as: :json
         expect(player.reload.slice(valid_attributes.keys)).to eq(valid_attributes.stringify_keys)
       end
@@ -79,10 +79,19 @@ RSpec.describe '/api/v1/teams/<team.id>/players', type: :request do
         args_with_balance_adjustment = valid_attributes.merge({ market_value: 1 })
         expect do
           patch api_v1_team_player_path(player, team_id: team.id),
-                params: { player: args_with_balance_adjustment }, 
-                headers: valid_headers, 
+                params: { player: args_with_balance_adjustment },
+                headers: valid_headers,
                 as: :json
         end.not_to change(player, :market_value)
+      end
+
+      it 'can put player on the transfer_list' do
+        patch api_v1_team_player_path(player, team_id: team.id),
+              params: { player: { asking_price: 2_000_000 } },
+              headers: valid_headers,
+              as: :json
+        expect(player.reload.asking_price).to eq(2_000_000)
+        expect(Player.on_transfer_list).to include(player)
       end
     end
   end
