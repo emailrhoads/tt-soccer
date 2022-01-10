@@ -2,6 +2,18 @@ stages:
   - build
   - test
 
+rubocop:
+  extends: .db
+  stage: test
+  cache:
+    policy: pull-push
+  artifacts:
+    name: coverage
+    paths:
+      - coverage/
+  script:
+    - bundle exec rubocop
+
 rspec:
   extends: .db
   stage: test
