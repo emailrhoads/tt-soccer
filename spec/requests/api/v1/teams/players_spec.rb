@@ -42,7 +42,9 @@ RSpec.describe '/api/v1/teams/<team.id>/players', type: :request do
     context 'when not logged in' do
       it 'requires login' do
         patch api_v1_team_player_path(player, team_id: team.id),
-              params: { player: valid_attributes }, headers: valid_headers, as: :json
+              params: { player: valid_attributes }, 
+              headers: valid_headers, 
+              as: :json
         expect_not_logged_in_error
       end
     end
@@ -55,7 +57,9 @@ RSpec.describe '/api/v1/teams/<team.id>/players', type: :request do
 
       it 'requires ownership' do
         patch api_v1_team_player_path(player, team_id: team.id),
-              params: { player: valid_attributes }, headers: valid_headers, as: :json
+              params: { player: valid_attributes }, 
+              headers: valid_headers, 
+              as: :json
         expect_authorization_error
       end
     end
@@ -65,7 +69,9 @@ RSpec.describe '/api/v1/teams/<team.id>/players', type: :request do
 
       it 'can update allowed attributes' do
         patch api_v1_team_player_path(player, team_id: team.id),
-              params: { player: valid_attributes }, headers: valid_headers, as: :json
+              params: { player: valid_attributes }, 
+              headers: valid_headers, 
+              as: :json
         expect(player.reload.slice(valid_attributes.keys)).to eq(valid_attributes.stringify_keys)
       end
 
@@ -73,7 +79,9 @@ RSpec.describe '/api/v1/teams/<team.id>/players', type: :request do
         args_with_balance_adjustment = valid_attributes.merge({ market_value: 1 })
         expect do
           patch api_v1_team_player_path(player, team_id: team.id),
-                params: { player: args_with_balance_adjustment }, headers: valid_headers, as: :json
+                params: { player: args_with_balance_adjustment }, 
+                headers: valid_headers, 
+                as: :json
         end.not_to change(player, :market_value)
       end
     end
