@@ -2,6 +2,18 @@ stages:
   - build
   - test
 
+rspec:
+  extends: .db
+  stage: test
+  cache:
+    policy: pull-push
+  artifacts:
+    name: coverage
+    paths:
+      - coverage/
+  script:
+    - bundle exec rspec --format documentation
+
 .build:
   image: ruby:3.0.0
   cache:
