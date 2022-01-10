@@ -35,10 +35,6 @@ module Api
       def team_params
         params.require(:team).permit(:name, :country)
       end
-
-      def no_such_team
-        render json: { error: 'no such team' }, status: :not_found
-      end
     end
   end
 end

@@ -38,7 +38,30 @@ RSpec.describe '/api/v1/teams/<team.id>/players', type: :request do
       }
     end
 
-    context 'with valid parameters' do
+    context 'when not logged in' do
+      it 'requires login' do
+        patch api_v1_team_player_path(player, team_id: team.id),
+              params: { player: valid_attributes }, headers: valid_headers, as: :json
+        expect_not_logged_in_error
+      end
+    end
+
+    context 'when logged in NOT as player owner' do
+      before do
+        non_owner_user = User.where.not(id: player.user.id).first
+        login(non_owner_user)
+      end
+
+      it 'requires ownership' do
+        patch api_v1_team_player_path(player, team_id: team.id),
+              params: { player: valid_attributes }, headers: valid_headers, as: :json
+        expect_authorization_error
+      end
+    end
+
+    context 'when logged in as player owner' do
+      before { login(player.user) }
+
       it 'can update allowed attributes' do
         patch api_v1_team_player_path(player, team_id: team.id),
               params: { player: valid_attributes }, headers: valid_headers, as: :json

@@ -5,6 +5,7 @@ class Player < ApplicationRecord
   INITIAL_MARKET_VALUE = 1_000_000
 
   belongs_to :team, dependent: :destroy
+  delegate :user, to: :team
 
   validates :asking_price, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
   validates :age, presence: true

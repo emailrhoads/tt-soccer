@@ -7,6 +7,8 @@ module Api
       class PlayersController < ApplicationController
         before_action :set_team, only: %i[index show update]
         before_action :set_player, only: %i[show update]
+        before_action :require_login, only: %i[update]
+        before_action :require_ownership, only: %i[update]
 
         def index
           records = @team.players
@@ -29,10 +31,12 @@ module Api
 
         def set_player
           @player = Player.find(params[:id])
+          return no_such_player unless @player
         end
 
         def set_team
           @team = Team.find(params[:team_id])
+          return no_such_team unless @team
         end
 
         def player_params

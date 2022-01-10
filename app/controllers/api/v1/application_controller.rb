@@ -18,6 +18,14 @@ module Api
       def not_authenticated
         render json: { error: 'You must login first' }, status: :unauthorized
       end
+
+      def no_such_player
+        render json: { error: 'player id not found' }, status: :not_found
+      end
+
+      def no_such_team
+        render json: { error: 'team id not found' }, status: :not_found
+      end
     end
   end
 end
