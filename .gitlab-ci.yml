@@ -2,6 +2,18 @@ stages:
   - build
   - test
 
+bundle-audit:
+  extends: .db
+  stage: test
+  cache:
+    policy: pull-push
+  artifacts:
+    name: coverage
+    paths:
+      - coverage/
+  script:
+    - bundle exec bundle-audit
+
 rubocop:
   extends: .db
   stage: test

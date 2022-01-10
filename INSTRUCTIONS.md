@@ -40,5 +40,4 @@ TODO:
   - ? Switch off SQL3
   - ? Bolster up enumerations into Objects?
   - ? Add active admin to make things manageable?
-  - Move specs into support includes
   
