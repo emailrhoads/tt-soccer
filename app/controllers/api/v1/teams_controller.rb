@@ -4,7 +4,9 @@ module Api
   module V1
     # allow users edit Teams via API
     class TeamsController < ApplicationController
+      before_action :require_login, only: %i[update]
       before_action :set_team, only: %i[show update]
+      before_action :require_ownership, only: %i[update]
 
       def show
         render json: @team

@@ -57,8 +57,7 @@ RSpec.describe '/api/v1/trades', type: :request do
 
     it 'will not work if user is not logged in' do
       post base_url, params: valid_params, headers: valid_headers, as: :json
-      expect(response.successful?).to eq(false)
-      expect(response_json['error']).to match(/you must login/i)
+      expect_not_logged_in_error
     end
   end
 end
