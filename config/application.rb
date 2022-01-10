@@ -28,5 +28,7 @@ module JohnRhoads
 
     # We want to user structure.sql in case we have views and etc in the future
     config.active_record.schema_format = :sql
+
+    config.action_controller.default_protect_from_forgery = true
   end
 end
