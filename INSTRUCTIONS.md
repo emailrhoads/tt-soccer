@@ -36,13 +36,12 @@ Helpful take-home project guidelines:
 • Please join the meeting room for this final interview on time. If you miss your interview without providing any prior notice, your application may be paused for 6 months.
 
 TODO:   
-  - Remove API Keys
-  - Add index to market_value on player
   - Add gitlab-ci.yml
-
+  - Add index to market_value on player
+  
   - ? Add bundle audit
   - ? Switch off SQL3
   - ? Bolster up enumerations into Objects?
   - ? Add active admin to make things manageable?
-  - Move specs into support inlcludes
+  - Move specs into support includes
   
