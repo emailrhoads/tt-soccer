@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe '/api/v1/users', type: :request do
+  fixtures :users
+  fixtures :teams
+  fixtures :players
+
   let(:valid_attributes) do
     {
       email: 'john@toptal.com',
@@ -21,6 +25,26 @@ RSpec.describe '/api/v1/users', type: :request do
 
   let(:valid_headers) do
     {}
+  end
+
+  describe 'GET /index' do
+    let(:user) { users(:test_user) }
+
+    context 'when NOT logged in' do
+      it 'throws a login required error' do
+        get "/api/v1/users/#{user.id}", headers: valid_headers, as: :json
+        expect_not_logged_in_error
+      end
+    end
+
+    context 'when logged in' do
+      before { login(user) }
+
+      it 'shows team and players', :focus do
+        get "/api/v1/users/#{user.id}", headers: valid_headers, as: :json
+        expect(response_json.keys).to eq(%w[user team players])
+      end
+    end
   end
 
   describe 'POST /create' do

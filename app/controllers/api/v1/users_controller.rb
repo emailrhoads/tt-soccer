@@ -4,6 +4,16 @@ module Api
   module V1
     # allow users to regisert via API
     class UsersController < ApplicationController
+      before_action :require_login, only: [:show]
+
+      def show
+        user = current_user
+        team = user.team
+        players = team.players
+        user_attrs = user.attributes.except('crypted_password', 'salt')
+        render json: { user: user_attrs, team: team, players: players }, status: :ok
+      end
+
       # POST /users
       def create
         @user = User.new(user_params)
