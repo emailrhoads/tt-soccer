@@ -35,13 +35,11 @@ Helpful take-home project guidelines:
 • The final deadline to submit the code is 12 hours before the meeting time so that it can be reviewed. Anything that is submitted after this time will not be taken into consideration.
 • Please join the meeting room for this final interview on time. If you miss your interview without providing any prior notice, your application may be paused for 6 months.
 
-TODO: 
-  - Only allow owner to edit players
-  
+TODO:   
   - Remove API Keys
   - Add index to market_value on player
   - Add gitlab-ci.yml
-  
+
   - ? Add bundle audit
   - ? Switch off SQL3
   - ? Bolster up enumerations into Objects?

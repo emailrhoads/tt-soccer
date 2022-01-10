@@ -2,10 +2,8 @@ test_user:
   email: test_user@rspec.com
   salt: <%= salt = "asdasdastr4325234324sdfds" %>
   crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("supersecret", salt) %>
-  api_key: apiK3y
 
 user1:
   email: user1@rspec.com
   salt: <%= salt = "asdasdastr4325234324sdfds" %>
   crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("supersecret", salt) %>
-  api_key: apiK3y
